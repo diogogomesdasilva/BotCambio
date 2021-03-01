@@ -1,14 +1,10 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
-import time
 import datetime
-import os
-import telebot
 import urllib
-from telebot import types
 import telepot
 
-bot = telebot.TeleBot('1680517574:AAGd9Jm7IVTV6Xt5CWQ58itbFoCk6FIYRMw')
 bot2 = telepot.Bot('1680517574:AAGd9Jm7IVTV6Xt5CWQ58itbFoCk6FIYRMw')
 
 
