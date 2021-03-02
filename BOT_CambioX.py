@@ -4,9 +4,11 @@ import json
 import datetime
 import urllib
 import telepot
+import locale
+
 
 bot2 = telepot.Bot('1680517574:AAGd9Jm7IVTV6Xt5CWQ58itbFoCk6FIYRMw')
-
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 def requisicao(moeda):
    try:
@@ -18,7 +20,8 @@ def requisicao(moeda):
     print('#### Cotação ####', datetime.datetime.now())
     print("Moeda: "+cotacao[moeda.upper()]['name'])
     print("Cotação: R$"+cotacao[moeda.upper()]['high'])
-    valor = cotacao[moeda.upper()]['high']
+    print(cotacao[moeda.upper()]['pctChange'])
+    valor = cotacao[moeda.upper()]['bid']
     return valor
 
    except:
@@ -37,7 +40,16 @@ def requisicao2(moeda):
     name = cotacao2[moeda.upper()]['name']
     return name
    except:
-       print("Moeda inválida!")
+       print("Moeda inválida!2")
+       return None
+def requisicao3(moeda):
+   try:
+       requisicao3 = requests.get('http://economia.awesomeapi.com.br/json/all/'+moeda.upper())
+       cotacao3 = json.loads(requisicao3.text)
+       variacao = cotacao3[moeda.upper()]['pctChange']
+       return variacao
+   except:
+       print("Moeda inválida!3")
        return None
 def Receive_msg(msg):
     print(msg['chat']['id'])
@@ -50,9 +62,17 @@ def Receive_msg(msg):
 
     moeda = requisicao2(msg['text'])
     valor = requisicao(msg['text'])
+    variacao = requisicao3(msg['text'])
+    print(variacao)
+    if float(variacao) < 0:
+        unicode_var = "\U0001F53B"
+    elif float(variacao) > 0:
+        unicode_var = "\U0001F53A"
+    else:
+        unicode_var = "U0001F539"
     firstName = msg['chat']['first_name']
-    timenow = datetime.datetime.now().strftime("%A-%d-%m-%Y às %H:%M")
-    message = "#### Cotação ####\n"+str(timenow)+"\nCotação do "+moeda+": R$ "+str(round(float(valor),2))
+    timenow = datetime.datetime.now().strftime("%A %d/%m/%Y às %H:%M")
+    message = "#### Cotação ####\n"+str(timenow)+"\nCotação do "+moeda+": R$ "+str(round(float(valor),2))+"\nVariação: "+variacao+"% "+unicode_var
     bot2.sendMessage(msg['chat']['id'],message)
     arquivo = open('log.txt', 'a+')
     log = "==========================================\n"+timenow+"\nRemetente: "+firstName+"\nMensagem completa: "+str(msg)+str(message)+"\n==========================================\n"

@@ -1,0 +1,16 @@
+==========================================
+Monday-01-03-2021 às 21:25
+Remetente: Diogo
+Mensagem completa: {'message_id': 932, 'from': {'id': 1129888806, 'is_bot': False, 'first_name': 'Diogo', 'language_code': 'pt-br'}, 'chat': {'id': 1129888806, 'first_name': 'Diogo', 'type': 'private'}, 'date': 1614644731, 'text': 'usd'}#### Cotação ####
+Monday-01-03-2021 às 21:25
+Cotação do Dólar Comercial: R$ 5.64
+Variação: 0.01 \U+1F53A
+==========================================
+==========================================
+Monday-01-03-2021 às 21:26
+Remetente: Diogo
+Mensagem completa: {'message_id': 936, 'from': {'id': 1129888806, 'is_bot': False, 'first_name': 'Diogo', 'language_code': 'pt-br'}, 'chat': {'id': 1129888806, 'first_name': 'Diogo', 'type': 'private'}, 'date': 1614644775, 'text': 'usd'}#### Cotação ####
+Monday-01-03-2021 às 21:26
+Cotação do Dólar Comercial: R$ 5.64
+Variação: 0.01 \U+1F53A
+==========================================
